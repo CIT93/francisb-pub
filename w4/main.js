@@ -46,7 +46,17 @@ function start(numberInHousehold, homeSize) {
 }
 
 function displayOutput() {
-    
+    for (arr of cfpData){
+        console.log(arr);
+        const output = document.getElementById("output");
+        const newP = document.createElement("h3");
+        newP.textContent = `Your Carbon Footprint Total is ${arr[4]}`
+        const newP2 = document.createElement("ul");
+        newP2.textContent = `${arr[3]} points for your ${arr[1]} home, and ${arr[2]} points for the number of people in your home being ${arr[0]}.`
+        newP2.style.padding = "0 0 40px 40px";
+        output.appendChild(newP);
+        output.appendChild(newP2);
+    }
 }
 
 start(5, "apartment");
