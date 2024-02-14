@@ -54,7 +54,7 @@ function displayOutObj(obj) {
 }
 
 
-function start(numberInHousehold, homeSize) {
+function start(numberInHousehold, homeSize, firstname, lastname) {
     const houseHoldPTS = determineHouseHoldPts(numberInHousehold);
     const impactSCR = determineHomeSizePts(homeSize);
     const total = houseHoldPTS + impactSCR;
@@ -64,6 +64,8 @@ function start(numberInHousehold, homeSize) {
         mySize: homeSize,
         myPeople: numberInHousehold,
         myTotal: total,
+        firstName: firstname,
+        lastName: lastname,
     });
 
 }
@@ -71,13 +73,16 @@ function start(numberInHousehold, homeSize) {
 function displayOutput() {
     const output = document.getElementById("output");
     for (obj of cfpData){
+        const newH1 = document.createElement("h1");
+        newH1.textContent = `For ${obj.firstName} ${obj.lastName}:`
         const newH2 = document.createElement("h2");
         newH2.textContent = `Carbon Footprint ${obj.myTotal}`;
         const newH3 = document.createElement("h3");
         newH3.textContent = `Based on number in and size of home`
         const newP = document.createElement("p");
         newP.textContent = `This number is based on the number of people in the house of ${obj.myPeople} (score: ${obj.myPTS})`;
-        newP.textContent += ` and a ${obj.mySize} size of home (score:${obj.mySCR})`;
+        newP.textContent += ` and a ${obj.mySize} size of home (score: ${obj.mySCR})`;
+        output.appendChild(newH1);
         output.appendChild(newH2);
         output.appendChild(newH3);
         output.appendChild(newP);
@@ -111,16 +116,18 @@ function displayOutput() {
 //start(6, "medium");
 //start(7, "small");
 
-displayOutput();
+//displayOutput();
 
 FORM.addEventListener('submit', function(e){ 
     e.preventDefault();
     //console.log('I am inside the callback function');
     //console.log(e);
-    const firstName = FORM.firstname.value;
-    const lastName = FORM.lastname.value;
+    const fName = FORM.firstname.value;
+    const lName = FORM.lastname.value;
     const householdNumber = FORM.numberofpeople.value;
     const sizeOfHome = FORM.typeofhome.value;
+    start(householdNumber, sizeOfHome, fName, lName);
+    displayOutput();
 })
 
 //callback
