@@ -124,7 +124,7 @@ FORM.addEventListener('submit', function(e){
     //console.log(e);
     const fName = FORM.firstname.value;
     const lName = FORM.lastname.value;
-    const householdNumber = FORM.numberofpeople.value;
+    const householdNumber = parseInt(FORM.numberofpeople.value);
     const sizeOfHome = FORM.typeofhome.value;
     start(householdNumber, sizeOfHome, fName, lName);
     output.innerHTML = "";
