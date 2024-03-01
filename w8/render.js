@@ -33,7 +33,10 @@ function renderTblBtn (index, data) {
         renderTbl(data);
     });
     btnEdit.addEventListener("click", function(e){
-        
+        const rowData = data[index];
+        document.getElementById("firstname").value = rowData.firstName;
+        document.getElementById("lastname").value = rowData.lastName;
+        document.getElementById("numberofpeople").value = rowData.myPeople; 
     })
     return td;
 }
@@ -63,6 +66,9 @@ function renderTbl(data) {
     const tbody = renderTblBody(data);
     table.appendChild(tbody);
     TBL.appendChild(table);
+    if (tbody.children.length === 0) {
+        table.remove();
+    }
 }
 
 export {renderTbl};
