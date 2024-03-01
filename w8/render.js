@@ -38,6 +38,8 @@ function renderTblBtn (index, data) {
         document.getElementById("lastname").value = rowData.lastName;
         document.getElementById("numberofpeople").value = rowData.myPeople; 
         document.getElementById("typeofhome").value = rowData.mySize; 
+        data.splice(index, 1);
+        renderTbl(data);
     })
     return td;
 }
