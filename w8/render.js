@@ -37,6 +37,7 @@ function renderTblBtn (index, data) {
         document.getElementById("firstname").value = rowData.firstName;
         document.getElementById("lastname").value = rowData.lastName;
         document.getElementById("numberofpeople").value = rowData.myPeople; 
+        document.getElementById("typeofhome").value = rowData.mySize; 
     })
     return td;
 }
