@@ -28,7 +28,6 @@ document.getElementById('form').addEventListener('submit', function (event) {
     const firstNameIsValid = document.getElementById('firstname').value !== '';
     const lastNameIsValid = document.getElementById('lastname').value !== '';
     if (firstNameIsValid && lastNameIsValid) {
-        alert('Form is valid. You can proceed with submitting the form to the server.');
         const fName = FORM.firstname.value;
         const lName = FORM.lastname.value;
         const householdNumber = parseInt(FORM.numberofpeople.value);
