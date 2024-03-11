@@ -5,7 +5,7 @@ import { saveLS, cfpData } from "./storage.js";
 
 console.log("global scope");
 
-const validateField = function(event) {
+const validateField = event => {
     const field = event.target.value;
     const fieldId = event.target.id;
     const fieldError = document.getElementById(`${fieldId}Error`);
@@ -23,7 +23,7 @@ const validateField = function(event) {
 FNAME.addEventListener('blur', validateField);
 LNAME.addEventListener('blur', validateField);
 
-document.getElementById('form').addEventListener('submit', function (event) {
+document.getElementById('form').addEventListener('submit', event => {
     event.preventDefault();
     if (FNAME.value !== '' && LNAME.value !== '') {
         SUBMIT.textContent = '';
@@ -37,37 +37,41 @@ document.getElementById('form').addEventListener('submit', function (event) {
     }
 })
 
-const start = function(numberInHousehold, homeSize, firstname, lastname) {
-    const houseHoldPTS = determineHouseHoldPts(numberInHousehold);
-    const impactSCR = determineHomeSizePts(homeSize);
+const start = (...x) => {
+    const houseHoldPTS = determineHouseHoldPts(x[0]);
+    const impactSCR = determineHomeSizePts(x[1]);
     const total = houseHoldPTS + impactSCR;
     cfpData.push({
-        firstName: firstname,
-        lastName: lastname,
+        firstName: x[2],
+        lastName: x[3],
         myPTS: houseHoldPTS,
         mySCR: impactSCR,
-        myPeople: numberInHousehold,
-        mySize: homeSize,
+        myPeople: x[0],
+        mySize: x[1],
         myTotal: total,
     });
 
 }
 
 renderTbl(cfpData);
+//rest operator
+// const add2 = function(...a) {
+//     return 2 + a[3];
+// }
 
-const add2 = function(...a) {
-    return 2 + a[3];
-}
+// const result = add2(1, 2, 3, 4);
 
-const result = add2(1, 2, 3, 4);
+// arrow function
 
-//spread argument
+// const add2 = a => 2 + a;
 
-//IIFE
+// const result = add2(100);
 
-const a = 3;
+// //IIFE
 
-(function(a){
-    console.log("inside IIFE");
-    console.log(a);
-})(a);
+// const a = 3;
+
+// (function(a){
+//     console.log("inside IIFE");
+//     console.log(a);
+// })(a);

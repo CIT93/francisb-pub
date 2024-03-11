@@ -3,13 +3,13 @@ import { saveLS } from "./storage.js";
 
 let table;
 
-const renderTblHeading = function() {
+const renderTblHeading = () => {
     TBL.innerHTML = "";
     const table = document.createElement("table");
     const thead = document.createElement("thead");
     const tr = document.createElement("tr");
     const headingTextArr = ["Name", "Number of People", "Home Size", "Footprint", "Actions"];
-    headingTextArr.forEach(function(text){
+    headingTextArr.forEach(text => {
         const th = document.createElement("th"); 
         th.textContent = text;
         tr.appendChild(th);
@@ -19,13 +19,13 @@ const renderTblHeading = function() {
     return table;
 }
 
-const onUpdate = function(index, data) {
+const onUpdate = (index, data) => {
     data.splice(index, 1);
     saveLS(data);
     renderTbl(data);
 }
 
-const renderTblBtn = function(obj, index, data) {
+const renderTblBtn = (...x) => {
     const td = document.createElement("td");
     const btnEdit = document.createElement("button");
     const btnDel = document.createElement("button");
@@ -33,22 +33,22 @@ const renderTblBtn = function(obj, index, data) {
     btnDel.textContent = "Del";
     td.appendChild(btnEdit);
     td.appendChild(btnDel);
-    btnDel.addEventListener('click', function(e) {
-        onUpdate(index, data);
+    btnDel.addEventListener('click', e => {
+        onUpdate(x[1], x[2]);
     });
-    btnEdit.addEventListener("click", function(e){
-        FORM[1].value = obj.firstName;
-        FORM[2].value = obj.lastName;
-        FORM[3].value = obj.myPeople;
-        FORM[4].value = obj.mySize;
-        onUpdate(index, data);
+    btnEdit.addEventListener("click", e =>{
+        FORM[1].value = x[0].firstName;
+        FORM[2].value = x[0].lastName;
+        FORM[3].value = x[0].myPeople;
+        FORM[4].value = x[0].mySize;
+        onUpdate(x[1], x[2]);
     })
     return td;
 }
 
-const renderTblBody = function(data) {  
+const renderTblBody = (data) => {
     const tbody = document.createElement("tbody");
-    data.forEach(function(obj, index) {
+    data.forEach((obj, index) => {
         console.log(index);
         const tr = document.createElement("tr"); 
         for(const [key, value] of Object.entries(obj)){
@@ -66,7 +66,7 @@ const renderTblBody = function(data) {
     return tbody;
 }
 
-const renderTbl = function(data) {
+const renderTbl = data => {
     TBL.innerHTML = "";
     if (data.length !== 0) {
         const table = renderTblHeading();

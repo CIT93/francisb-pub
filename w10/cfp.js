@@ -1,6 +1,6 @@
 export {determineHomeSizePts, determineHouseHoldPts};
 
-const determineHomeSizePts = function(homeSize) {
+const determineHomeSizePts = (homeSize = FORM.typeofhome.value) => {
     let impactScore = 0;
     if (homeSize === "large") {
         impactScore += 10;
@@ -15,7 +15,7 @@ const determineHomeSizePts = function(homeSize) {
 }
 
 
-const determineHouseHoldPts = function(numberInHousehold) {
+const determineHouseHoldPts = (numberInHousehold = FORM.numberofpeople.value) => {
     let houseHoldPoints = 0;
     if (numberInHousehold === 1) {
         houseHoldPoints = 14;
