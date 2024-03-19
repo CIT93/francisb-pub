@@ -1,13 +1,15 @@
 class FP {
-    constructor(first, last, houseMembers, houseSize, dietType) {
+    constructor(first, last, houseMembers, houseSize, dietType, dietConvenience) {
         this.first = first;
         this.last = last;
         this.houseMembers = houseMembers;
         this.houseSize = houseSize;
         this.dietType = dietType;
+        this.dietConvenience = dietConvenience
         this.homeSizePts();
         this.houseHoldPts();
         this.dietTypePts();
+        this.dietConveniencePts();
         this.total();
     }
     homeSizePts() { 
@@ -38,7 +40,7 @@ class FP {
             this.houseHoldPts = 2;
         }
     }
-    dietTypePts(){
+    dietTypePts() {
         if (this.dietType === "meat (daily)") {
             this.dietTypePts = 10;
         } else if (this.dietType === "meat (few)") {
@@ -46,17 +48,21 @@ class FP {
         } else if (this.dietType === "vegetarian") {
             this.dietTypePts = 4;
         } else if (this.dietType === "vegan") {
-            this.dietTypePts = 2;
-        } else if (this.dietType === "prepackaged") {
-            this.dietTypePts = 12;
-        } else if (this.dietType === "balanced") {
-            this.dietTypePts = 6;
-        } else if (this.dietType === "local") {
-            this.dietTypePts = 2;
+            this.dietTypePts = 2
+        }
+    } 
+    dietConveniencePts() {
+        if (this.dietConvenience === "prepackaged") {
+            this.dietConveniencePts = 12;
+        } else if (this.dietConvenience === "balanced") {
+            this.dietConveniencePts = 6;
+        } else if (this.dietConvenience === "local") {
+            this.dietConveniencePts = 2;
         }
     }
+
     total() {
-        this.total = this.houseHoldPts + this.homeSizePts + this.dietTypePts;
+        this.total = this.houseHoldPts + this.homeSizePts + this.dietTypePts + this.dietConveniencePts;
     }
 }
 

@@ -44,7 +44,7 @@ document.getElementById('form').addEventListener('submit', event => {
     if (FNAME.value !== '' && LNAME.value !== '') {
         SUBMIT.textContent = '';
         //start(parseInt(FORM.numberofpeople.value), FORM.typeofhome.value, FNAME.value, LNAME.value);
-        const fpObj = new FP(FNAME.value, LNAME.value, parseInt(FORM.numberofpeople.value), FORM.typeofhome.value, FORM.foodconsumption.value)
+        const fpObj = new FP(FNAME.value, LNAME.value, parseInt(FORM.numberofpeople.value), FORM.typeofhome.value, FORM.foodconsumption.value, FORM.foodconvenience.value)
         // fpObj.homeSizePts();
         // fpObj.houseHoldPts();
         cfpData.push(fpObj);
