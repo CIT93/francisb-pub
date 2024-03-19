@@ -43,7 +43,7 @@ class FP {
             this.dietTypePts = 10;
         } else if (this.dietType === "meat (few)") {
             this.dietTypePts = 8;
-        } else if (this.dietType === "vegetarian") {
+        } else if (this.dietType === "vegeterian") {
             this.dietTypePts = 4;
         } else if (this.dietType === "vegan") {
             this.dietTypePts = 2;
