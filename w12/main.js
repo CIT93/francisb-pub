@@ -17,3 +17,4 @@ function simulateWorkout(duration, callback) {
         callback();
     }, totalTime);
 }
+
