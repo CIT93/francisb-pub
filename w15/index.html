@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Week 15 - Carbon Footprint - Pri</title>
+        <script defer type="module" src="main.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <form id="form">
+            <fieldset>
+                <legend>Input Carbon Footprint</legend>
+                <div>
+                    <label for="">First Name:</label>
+                    <input type="text" name="firstname" maxlength="20" id="firstname">
+                    <span id="firstnameError" class="error" role="alert"></span>
+                </div>
+                <div>
+                    <label for="">Last Name:</label>
+                    <input type="text" name="lastname" maxlength="20" id="lastname">
+                    <span id="lastnameError" class="error" role="alert"></span>
+                </div>
+                <div>
+                    <label for="">Number of People in Household:</label>
+                    <input type="number" name="numberofpeople" min="1" max="6" id="numberofpeople" required/>
+                </div>
+                <div>
+                    <label for="">Size of Home:</label>
+                    <select name="typeofhome" id="typeofhome" required>
+                        <option value="">---Please enter size of home---</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="">Food Consumption:</label>
+                    <select name="foodconsumption" id="foodconsumption" required>
+                        <option value="">-----Please enter diet type-----</option>
+                        <option value="meat (daily)">Eat meat on a daily basis</option>
+                        <option value="meat (few)">Eat meat a few times a week</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="vegan">Vegan or only eat wild meat</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="">Food Convenience:</label>
+                    <select name="foodconvenience" id="foodconvenience" required>
+                        <option value="" id="foodconveniencechoice">-------Please enter convenience of food-------</option>
+                        <option value="prepackaged">Eat prepackaged food</option>
+                        <option value="balanced">Eat a balance of fresh and convenience food</option>
+                        <option value="local">Eat fresh, locally grown, or hunted food</option>
+                    </select>
+                </div>
+                <button type="submit">Submit</button>
+                <span id="submiterror" class="error"></span>
+            </fieldset>
+        </form>
+        <div id="tab-data"></div>
+    </body>
+</html>
