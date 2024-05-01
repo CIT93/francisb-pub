@@ -1,6 +1,6 @@
 import { renderTbl } from "./render.js";
 import { determineHomeSizePts, determineHouseHoldPts } from "./cfp.js";
-import { FORM, FNAME, LNAME, SUBMIT } from "./global.js";
+import { FORM, FNAME, LNAME, SUBMIT, WATERCONSUM, CHECKBOX } from "./global.js";
 import { saveLS, cfpData } from "./storage.js"; 
 import { FP } from "./fp.js";
 
@@ -38,11 +38,30 @@ const validateField = event => {
 FNAME.addEventListener('blur', validateField);
 LNAME.addEventListener('blur', validateField);
 
+function btnFunction() {
+    if (WATERCONSUM.value === "0") {
+        CHECKBOX.disabled = true;
+    }
+    else {
+        CHECKBOX.disabled = false;
+    }
+}
+
+WATERCONSUM.addEventListener('change', btnFunction)
+
+function doubleCalc() {
+    if (CHECKBOX.checked) {
+        return parseInt(WATERCONSUM.value * 2);
+    }
+    return parseInt(WATERCONSUM.value);
+}
+
 document.getElementById('form').addEventListener('submit', e => {
-    event.preventDefault();
+    e.preventDefault();
     if (FNAME.value !== '' && LNAME.value !== '') {
         SUBMIT.textContent = '';
-        const fpObj = new FP(FNAME.value, LNAME.value, parseInt(e.target.numberofpeople.value), e.target.typeofhome.value, e.target.foodconsumption.value, e.target.foodconvenience.value, parseInt(e.target.dishwasher.value))
+        const doubledWater = doubleCalc();
+        const fpObj = new FP(FNAME.value, LNAME.value, parseInt(e.target.numberofpeople.value), e.target.typeofhome.value, e.target.foodconsumption.value, e.target.foodconvenience.value, doubledWater)
         cfpData.push(fpObj);
         saveLS(cfpData);
         renderTbl(cfpData);
@@ -54,4 +73,3 @@ document.getElementById('form').addEventListener('submit', e => {
 })
 
 renderTbl(cfpData);
-
