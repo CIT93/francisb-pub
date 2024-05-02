@@ -61,7 +61,7 @@ document.getElementById('form').addEventListener('submit', e => {
     if (FNAME.value !== '' && LNAME.value !== '') {
         SUBMIT.textContent = '';
         const doubledWater = doubleCalc();
-        const fpObj = new FP(FNAME.value, LNAME.value, parseInt(e.target.numberofpeople.value), e.target.typeofhome.value, e.target.foodconsumption.value, e.target.foodconvenience.value, doubledWater)
+        const fpObj = new FP(FNAME.value, LNAME.value, parseInt(e.target.numberofpeople.value), e.target.typeofhome.value, e.target.foodconsumption.value, e.target.foodconvenience.value, doubledWater, parseInt(e.target.householdp.value), CHECKBOX.checked)
         cfpData.push(fpObj);
         saveLS(cfpData);
         renderTbl(cfpData);

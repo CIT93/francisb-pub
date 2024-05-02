@@ -1,6 +1,7 @@
 import { FORM, TBL } from "./global.js";
 import { saveLS } from "./storage.js";
 import { cfpAvg } from "./average.js";
+import { CHECKBOX } from "./global.js";
 
 let table;
 
@@ -44,7 +45,13 @@ const renderTblBtn = (...x) => {
         FORM[4].value = x[0].houseSize;
         FORM[5].value = x[0].dietType;
         FORM[6].value = x[0].dietConvenience;
-        FORM[7].value = x[0].waterConsumption.toString();
+        let finalWaterValue = x[0].waterConsumption;
+        if (x[0].checked === true) {
+            finalWaterValue /= 2;
+            FORM[8].checked = true;
+        }
+        FORM[7].value = finalWaterValue.toString(); 
+        FORM[9].value = x[0].houseHoldPur.toString();
         onUpdate(x[1], x[2]);
     })
     return td;

@@ -1,5 +1,5 @@
 class FP {
-    constructor(first, last, houseMembers, houseSize, dietType, dietConvenience, waterConsumption) {
+    constructor(first, last, houseMembers, houseSize, dietType, dietConvenience, waterConsumption, houseHoldPur, checked) {
         this.first = first;
         this.last = last;
         this.houseMembers = houseMembers;
@@ -7,6 +7,8 @@ class FP {
         this.dietType = dietType;
         this.dietConvenience = dietConvenience;
         this.waterConsumption = waterConsumption;
+        this.houseHoldPur = houseHoldPur;
+        this.checked = checked
         this.homeSizePts();
         this.houseHoldPts();
         this.dietTypePts();
@@ -62,7 +64,7 @@ class FP {
         }
     }
     total() {
-        this.total = this.houseHoldPts + this.homeSizePts + this.dietTypePts + this.dietConveniencePts + this.waterConsumption;
+        this.total = this.houseHoldPts + this.homeSizePts + this.dietTypePts + this.dietConveniencePts + this.waterConsumption + this.houseHoldPur;
     }
 }
 
